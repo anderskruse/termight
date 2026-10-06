@@ -1,0 +1,6 @@
+title: Termight
+description: A client for GitHub Codespaces on iPhone
+theme: minima
+header_pages:
+  - support.md
+  - privacy.md
