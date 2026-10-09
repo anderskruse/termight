@@ -16,12 +16,12 @@ The developer of Termight does not collect, store or sell your personal data. Th
 
 ## What stays on your phone
 
-- **GitHub access tokens.** They are stored in the iOS Keychain.
+- **GitHub access tokens.** They are stored in the iOS Keychain, for this device only.
 - **Settings.** Appearance, your default agent, saved terminal commands, and the address and model name of a custom endpoint if you set one.
 - **Agent sessions.** The list of your sessions and their transcripts are saved in the app's own storage so you can reopen them.
 - **Sign-in cookies.** When you sign in to an AI provider inside the app, that provider's cookies are kept in the app's browser storage.
 
-None of this is sent to the developer. It is included in the backups you make of your own phone.
+None of this is sent to the developer. Your settings, sessions and sign-in cookies are included in the backups you make of your own phone. The GitHub tokens are not: they stay on the device they were saved on, and on a new or restored phone you sign in again.
 
 ## What leaves your phone, and where it goes
 
@@ -31,7 +31,9 @@ None of this is sent to the developer. It is included in the backups you make of
 
 If you sign in with a personal access token instead, the token goes only to GitHub.
 
-**API keys for AI providers.** If you enter an API key or sign in to an AI provider, the app encrypts the key on your phone and saves it as a GitHub Codespaces secret in your own GitHub account. The key is not kept on your phone and is never sent to the developer.
+**API keys for AI providers.** If you enter an API key, the app encrypts the key on your phone and saves it as a GitHub Codespaces secret in your own GitHub account. The key is not kept on your phone and is never sent to the developer.
+
+**Signing in with a Claude subscription.** If you sign in to Claude from the app, the token Claude issues is stored in your codespace, so that the codespace is signed in: in a file in your home directory there (`~/.codescape/claude-oauth-token`) and in your shell startup files, which load it. It stays there until you remove it under Settings → Providers → Claude Subscription, or until the codespace is rebuilt or deleted. If you choose to remember it for new codespaces, it is also saved as a GitHub Codespaces secret in your own GitHub account. The token is not kept on your phone and is never sent to the developer.
 
 **AI providers.** When you run a coding agent, the agent runs inside your codespace. Your prompts, and the files and command output the agent reads, are sent from your codespace to the AI provider you chose (for example Anthropic, OpenAI, OpenRouter or a custom endpoint), under your own account or API key with that provider. The provider's own privacy policy applies. Agents may also keep their own history inside your codespace.
 
@@ -46,6 +48,7 @@ The developer has no personal data from the app to share and shares none.
 - **Sign out** in Settings. This deletes the GitHub tokens from your phone. Do this before deleting the app, because iOS can keep Keychain items after an app is removed.
 - **Revoke the app's access** at [github.com/settings/applications](https://github.com/settings/applications). After that the app can no longer reach your GitHub account.
 - **Delete saved API keys** on GitHub under Settings → Codespaces → Secrets, or from the app's Settings.
+- **Remove a Claude sign-in from a codespace** under Settings → Providers → Claude Subscription in the app. This deletes the token stored in that codespace. It does not cancel the token itself.
 - **Delete the app** to remove its settings, session lists and transcripts from your phone.
 - **Delete your codespaces** on GitHub to remove what is stored in them.
 
